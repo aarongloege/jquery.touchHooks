@@ -13,9 +13,6 @@ module.exports = function(grunt) {
     // Intelligently autoloads `grunt-*` plugins from the package dependencies.
     require('load-grunt-tasks')(grunt);
 
-    // Adds better support for defining options.
-    require('nopt-grunt')(grunt);
-
     // -- Configuration --------------------------------------------------------
 
     grunt.initConfig({
@@ -24,7 +21,7 @@ module.exports = function(grunt) {
         watch: {
             scripts: {
                 files: [
-                    './jquery.tap.js',
+                    './jquery.touchHooks.js',
                     './Gruntfile.js'
                 ],
                 tasks: ['build']
@@ -35,56 +32,7 @@ module.exports = function(grunt) {
         uglify: {
             minify: {
                 files: {
-                    './jquery.tap.min.js': ['./jquery.tap.js']
-                }
-            }
-        },
-
-        // Copy files over to the gh-pages branch and push them.
-        'gh-pages': {
-            options: {
-                add: true,
-                clone: './.grunt',
-                branch: 'gh-pages',
-                base: './'
-            },
-            'gh-pages': {
-                src: [
-                    'jquery.tap.js',
-                    '.gitignore',
-                    'index.html'
-                ]
-            }
-        },
-
-        // Remove temporary files
-        clean: {
-            'gh-pages': {
-                src: ['./.grunt']
-            },
-            markdown: {
-                src: './index.html'
-            }
-        },
-
-        // Generate github page
-        markdown: {
-            'gh-pages': {
-                files: [
-                    {
-                        src: './README.md',
-                        dest: './index.html'
-                    }
-                ],
-                options: {
-                    template: './markdown.template',
-                    templateContext: {
-                        version: tag
-                    },
-                    markdownOptions: {
-                        highlight: 'manual',
-                        gfm: true
-                    }
+                    './jquery.touchHooks.min.js': ['./jquery.touchHooks.js']
                 }
             }
         },
@@ -138,9 +86,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['build']);
     grunt.registerTask('build', ['uglify']);
-    grunt.registerTask('cleanup', ['clean:markdown', 'clean:gh-pages']);
 
-    grunt.registerTask('gh', ['cleanup', 'markdown:gh-pages', 'gh-pages', 'cleanup']);
-    grunt.registerTask('publish', ['build', 'modify_json', 'gitcommit:publish', 'gh', 'gittag:publish', 'gitpush:publish']);
+    grunt.registerTask('publish', ['build', 'modify_json', 'gitcommit:publish', 'gittag:publish', 'gitpush:publish']);
 
 };
