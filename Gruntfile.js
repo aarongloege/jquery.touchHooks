@@ -42,7 +42,8 @@ module.exports = function(grunt) {
             publish: {
                 options: {
                     message: 'Version bump to v' + tag
-                }
+                },
+                src: ['*', '!node_modules']
             }
         },
 

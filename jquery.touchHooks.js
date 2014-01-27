@@ -28,7 +28,7 @@
  * click will automatically be used instead.
  *
  * @author Aaron Gloege
- * @version 1.0.0
+ * @version 1.0.3
  */
 (function($) {
     'use strict';
@@ -53,12 +53,16 @@
 
         /**
          * Properties to copy over to jQuery.Event
-         * @type Array
+         *
+         * @property props
+         * @type String[]
          */
         props: 'touches changedTouches'.split(' '),
 
         /**
          * Function to copy over the first touch event's page, screen, and client data.
+         *
+         * @method filter
          * @param {jQuery.Event} event
          * @param {TouchEvent} original
          * @returns {jQuery.Event}
@@ -81,11 +85,6 @@
     var length = events.length;
 
     for (; i < length; i++) {
-        if ($.event.fixHooks[events[i]]) {
-            console.log(events[i] + ' fixHook already registered');
-            continue;
-        }
-
         $.event.fixHooks[events[i]] = fix;
     }
 

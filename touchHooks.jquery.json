@@ -1,7 +1,7 @@
 {
     "name": "touchHooks",
     "title": "jQuery Touch Hooks",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "author": {
         "name": "Aaron Gloege",
         "email": "aaron.gloege@gmail.com",
@@ -22,7 +22,6 @@
         "touch",
         "input"
     ],
-    "homepage": "http://aarongloege.github.com/jquery.touchHooks/",
-    "bugs": "https://github.com/aarongloege/jquery.touchHooks/issues",
-    "demo": "http://aarongloege.github.com/jquery.touchHooks/example/"
+    "homepage": "https://github.com/aarongloege/jquery.touchHooks/",
+    "bugs": "https://github.com/aarongloege/jquery.touchHooks/issues"
 }

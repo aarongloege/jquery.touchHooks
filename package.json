@@ -1,6 +1,6 @@
 {
     "name": "jquery-touchHooks",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Hook into jQuery fix hook API to copy over touch event properties into jQuery.Event.",
     "private": true,
     "dependencies": {},
